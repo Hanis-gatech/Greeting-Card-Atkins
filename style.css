@@ -1,4 +1,6 @@
-
+/* =========================
+   Polished Greeting Card UI
+   ========================= */
 
 /* page */
 :root {
@@ -250,4 +252,5 @@ button:active {
     width: min(520px, 86vw);
   }
 }
+
 
