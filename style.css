@@ -1,0 +1,112 @@
+/* basic page styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* input + button */
+input {
+  padding: 10px 12px;
+  margin: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* carousel container */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* prev / next buttons */
+.prev,
+.next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* track */
+.carousel-track {
+  position: relative;
+  width: 600px;
+  height: 380px;
+  perspective: 1200px;
+  cursor: grab;
+}
+
+/* slides */
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* card */
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* card image */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
+/* text overlay */
+.name-display {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  font-size: 32px;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* active states controlled by JS */
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateX(0) translateZ(0) rotateY(0);
+  z-index: 3;
+}
+
+.carousel-slide.prev {
+  opacity: 1;
+  transform: translateX(-50%) translateZ(-300px) rotateY(25deg);
+  z-index: 2;
+}
+
+.carousel-slide.next {
+  opacity: 1;
+  transform: translateX(50%) translateZ(-300px) rotateY(-25deg);
+  z-index: 2;
+}

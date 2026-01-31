@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greeting Card</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <h1>My Greeting Card</h1>
+
+  <input id="userName" type="text" placeholder="Type name here" />
+  <button id="downloadBtn">Download</button>
+
+  <div class="carousel">
+    <button class="prev">‹</button>
+
+    <div class="carousel-track">
+
+      <div class="carousel-slide" data-text-color="#ffffff">
+        <div class="card">
+          <img src="images/card1.png.jpeg" />
+          <div class="name-display"></div>
+        </div>
+      </div>
+
+      <div class="carousel-slide" data-text-color="#000000">
+        <div class="card">
+          <img src="images/card1.png.jpeg" />
+          <div class="name-display"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="next">›</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
