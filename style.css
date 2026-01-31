@@ -1,6 +1,4 @@
-/* =========================
-   Polished Greeting Card UI
-   ========================= */
+
 
 /* page */
 :root {
@@ -141,6 +139,15 @@ button:active {
   border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
+/* export area
+   this should shrink wrap to the image plus overlays so html2canvas captures exact dimensions */
+.export-area {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
 /* card image */
 .card img {
   width: 100%;
@@ -157,7 +164,7 @@ button:active {
   top: 70%;
   transform: translate(-50%, -50%);
   width: 84%;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 300;
   letter-spacing: 0.3px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.35);
@@ -252,5 +259,4 @@ button:active {
     width: min(520px, 86vw);
   }
 }
-
 
