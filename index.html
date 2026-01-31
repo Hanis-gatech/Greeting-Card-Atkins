@@ -19,7 +19,9 @@
       autocomplete="off"
       spellcheck="false"
     />
-    <button id="downloadBtn" type="button">Download</button>
+    <button id="downloadBtn" type="button" aria-label="Download greeting card">
+      Download
+    </button>
   </div>
 
   <div class="carousel">
@@ -28,15 +30,19 @@
     <div class="carousel-track">
       <div class="carousel-slide" data-text-color="#ffffff">
         <div class="card">
-          <img src="images/card1.png.jpeg" alt="Card 1" />
-          <div class="name-display"></div>
+          <div class="export-area">
+            <img src="images/card1.png.jpeg" alt="Card 1" />
+            <div class="name-display"></div>
+          </div>
         </div>
       </div>
 
       <div class="carousel-slide" data-text-color="#000000">
         <div class="card">
-          <img src="images/card2.png.jpeg" alt="Card 2" />
-          <div class="name-display"></div>
+          <div class="export-area">
+            <img src="images/card2.png.jpeg" alt="Card 2" />
+            <div class="name-display"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -48,3 +54,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
