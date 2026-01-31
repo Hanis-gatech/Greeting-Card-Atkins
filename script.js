@@ -183,14 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
   track.addEventListener('dragstart', e => e.preventDefault());
 
   downloadBtn.addEventListener('click', async () => {
-    const activeCard = document.querySelector('.carousel-slide.active .card');
-    if (!activeCard) return;
+    const exportArea = document.querySelector('.carousel-slide.active .export-area');
+    if (!exportArea) return;
 
-    const w = Math.round(activeCard.offsetWidth);
-    const h = Math.round(activeCard.offsetHeight);
+    const rect = exportArea.getBoundingClientRect();
+    const w = Math.round(rect.width);
+    const h = Math.round(rect.height);
+
+    const prevTransform = exportArea.style.transform;
+    exportArea.style.transform = 'none';
 
     try {
-      const canvas = await html2canvas(activeCard, {
+      const canvas = await html2canvas(exportArea, {
         scale: 2,
         useCORS: true,
         backgroundColor: null,
@@ -206,6 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
       a.click();
     } catch (err) {
       console.error('Download failed:', err);
+    } finally {
+      exportArea.style.transform = prevTransform;
     }
   });
 });
+
