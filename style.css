@@ -1,53 +1,120 @@
-/* basic page styling */
+/* =========================
+   Polished Greeting Card UI
+   ========================= */
+
+/* page */
+:root {
+  --bg: #07090c;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-border: rgba(255, 255, 255, 0.10);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.72);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --radius: 18px;
+  --card-w: 600px;
+  --card-h: 380px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0b0b;
-  color: #ffffff;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 50% 0%, rgba(255,255,255,0.06), transparent 60%),
+              radial-gradient(900px 500px at 10% 30%, rgba(199,227,234,0.10), transparent 55%),
+              var(--bg);
+  color: var(--text);
   text-align: center;
+  display: grid;
+  place-items: start center;
+  padding: 42px 16px 60px;
 }
 
-/* input + button */
-input {
-  padding: 10px 12px;
-  margin: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
+/* optional: make your h1 look nicer without editing HTML */
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: 0.3px;
+  font-weight: 700;
 }
 
-button {
-  padding: 10px 14px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-/* carousel container */
-.carousel {
-  display: flex;
+/* control bar */
+.controls {
+  display: inline-flex;
+  gap: 14px;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  padding: 14px 16px;
+  margin: 12px auto 22px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* prev / next buttons */
-.prev,
-.next {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+/* input */
+input {
+  width: min(420px, 68vw);
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--text);
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.60);
+}
+
+input:focus {
+  border-color: rgba(199, 227, 234, 0.55);
+  box-shadow: 0 0 0 4px rgba(199, 227, 234, 0.16);
+}
+
+/* buttons */
+button {
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  color: #0b0b0b;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: #ffffff;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* carousel wrapper */
+.carousel {
+  position: relative;
+  width: var(--card-w);
+  margin: 0 auto;
 }
 
 /* track */
 .carousel-track {
   position: relative;
-  width: 600px;
-  height: 380px;
+  width: var(--card-w);
+  height: var(--card-h);
   perspective: 1200px;
   cursor: grab;
+  margin: 0 auto;
+  border-radius: var(--radius);
 }
 
 /* slides */
@@ -58,16 +125,20 @@ button {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.42s ease, opacity 0.42s ease;
+  will-change: transform, opacity;
 }
 
-/* card */
+/* card (locked size for download) */
 .card {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: var(--card-w);
+  height: var(--card-h);
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: var(--radius);
+  background: #c7e3ea;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 /* card image */
@@ -85,11 +156,64 @@ button {
   left: 50%;
   top: 70%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 84%;
   font-size: 32px;
-  font-weight: 100;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+/* arrows as polished overlay (no sticking out) */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.84);
+  color: #111;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease;
+}
+
+/* keep them inside the carousel bounds */
+.prev { left: 12px; }
+.next { right: 12px; }
+
+.prev:hover,
+.next:hover {
+  background: rgba(255, 255, 255, 0.98);
+  transform: translateY(-50%) scale(1.03);
+}
+
+.prev:active,
+.next:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* show arrows on hover for a cleaner look */
+.prev,
+.next {
+  opacity: 0;
+}
+
+.carousel:hover .prev,
+.carousel:hover .next {
+  opacity: 1;
 }
 
 /* active states controlled by JS */
@@ -110,3 +234,23 @@ button {
   transform: translateX(50%) translateZ(-300px) rotateY(-25deg);
   z-index: 2;
 }
+
+/* responsive */
+@media (max-width: 720px) {
+  :root {
+    --card-w: min(92vw, 600px);
+    --card-h: calc(var(--card-w) * 0.6333);
+  }
+
+  .controls {
+    border-radius: 18px;
+    padding: 14px;
+    flex-wrap: wrap;
+  }
+
+  input {
+    width: min(520px, 86vw);
+  }
+}
+
+

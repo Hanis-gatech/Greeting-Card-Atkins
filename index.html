@@ -8,38 +8,44 @@
 </head>
 
 <body>
-
   <h1>My Greeting Card</h1>
 
-  <input id="userName" type="text" placeholder="Type name here" />
-  <button id="downloadBtn">Download</button>
+  <div class="controls">
+    <input
+      id="userName"
+      type="text"
+      placeholder="Type name here"
+      maxlength="20"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <button id="downloadBtn" type="button">Download</button>
+  </div>
 
   <div class="carousel">
-    <button class="prev">‹</button>
+    <button class="prev" type="button" aria-label="Previous card">‹</button>
 
     <div class="carousel-track">
-
       <div class="carousel-slide" data-text-color="#ffffff">
         <div class="card">
-          <img src="images/card1.png.jpeg" />
+          <img src="images/card1.png.jpeg" alt="Card 1" />
           <div class="name-display"></div>
         </div>
       </div>
 
       <div class="carousel-slide" data-text-color="#000000">
         <div class="card">
-          <img src="images/card1.png.jpeg" />
+          <img src="images/card2.png.jpeg" alt="Card 2" />
           <div class="name-display"></div>
         </div>
       </div>
-
     </div>
 
-    <button class="next">›</button>
+    <button class="next" type="button" aria-label="Next card">›</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
+
